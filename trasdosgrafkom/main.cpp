@@ -4,6 +4,7 @@
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
+#include <math.h>
 #endif
 using namespace std;
 float xrot = 0;
@@ -11,14 +12,19 @@ float yrot = 0;
 float xdiff = 0;
 float ydiff = 0;
 bool mousedown = false;
+bool kiri = true;
+bool kanan = true;
 
 void init(void);
 void display(void);
 void awan(void);
+void timer(int t);
 void keyboard(unsigned char, int, int);
 void resize(int, int);
 void mouseMove(int x, int y);
 void mouseButton(int button, int state, int x, int y);
+int a = 0;
+int b = 0;
 
 int is_depth;
 void mouseMove(int x, int y) {
@@ -3339,27 +3345,25 @@ void display(void)
     glVertex3f(150.05, 48.0, -20.0);
     glEnd();
 
+
+    glPushMatrix();
+    glTranslatef( 0, 10,b);
+
     //awan
-    glPushMatrix();
-    glTranslatef(-5, 300, -50);
+    glTranslatef(-5, 70, -50);
     glScalef(1.2, 1.2, 2.0);
     awan();
-    glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef(10, 270, -4);
+
+    glTranslatef(10, 70, -4);
     glScalef(1.2, 1.2, 2.0);
     awan();
-    glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef(0, 250, 50);
+    glTranslatef(0, 50, 50);
     glScalef(1.2, 1.2, 2.0);
     awan();
-    glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef(20, 300, 100);
+    glTranslatef(20, 70, 100);
     glScalef(1.2, 1.2, 2.0);
     awan();
     glPopMatrix();
@@ -3390,6 +3394,33 @@ void awan(){
  glTranslatef(6,-2,2);
  glutSolidSphere(7, 50, 50);
  glPopMatrix();
+ }
+
+ void timer(int t)
+ {
+     if (kiri){
+        a -= 1;
+     } else {
+         a += 1;
+     }
+     if (a <-140){
+        kiri = false;
+     } else if(a >120){
+         kiri = true;
+     }
+
+     if (kanan){
+        b += 1;
+     }else {
+        b -= 1;
+     }
+     if (b >140){
+        kanan = false;
+     }else if (b <-120){
+        kanan = true;
+     }
+     glutPostRedisplay();
+     glutTimerFunc(50, timer, 0);
  }
 
 /*
@@ -3498,6 +3529,7 @@ int main(int argc, char** argv)
     glutMouseFunc(mouseButton);
     glutMotionFunc(mouseMove);
     glutReshapeFunc(resize);
+    glutTimerFunc(1,timer,0);
     glutMainLoop();
     return 0;
 }

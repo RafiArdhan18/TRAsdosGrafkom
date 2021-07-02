@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1625197960 source:c:\users\hp\documents\github\trasdosgrafkom\trasdosgrafkom\main.cpp
+1625210832 source:c:\users\hp\documents\github\trasdosgrafkom\trasdosgrafkom\main.cpp
 	<stdlib.h>
 	<windows.h>
 	<GLUT/glut.h>
 	<GL/glut.h>
+	<math.h>
 
 1341006776 c:\program files (x86)\codeblocks\mingw\include\stdlib.h
 	<_mingw.h>
@@ -219,4 +220,7 @@
 1301111164 c:\program files (x86)\codeblocks\mingw\include\gl\glu.h
 	<stddef.h>
 	<GL/gl.h>
+
+1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
+	<_mingw.h>
 
