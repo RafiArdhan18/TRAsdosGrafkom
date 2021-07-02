@@ -14,6 +14,7 @@ bool mousedown = false;
 
 void init(void);
 void display(void);
+void awan(void);
 void keyboard(unsigned char, int, int);
 void resize(int, int);
 void mouseMove(int x, int y);
@@ -3338,9 +3339,58 @@ void display(void)
     glVertex3f(150.05, 48.0, -20.0);
     glEnd();
 
+    //awan
+    glPushMatrix();
+    glTranslatef(-5, 300, -50);
+    glScalef(1.2, 1.2, 2.0);
+    awan();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(10, 270, -4);
+    glScalef(1.2, 1.2, 2.0);
+    awan();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0, 250, 50);
+    glScalef(1.2, 1.2, 2.0);
+    awan();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(20, 300, 100);
+    glScalef(1.2, 1.2, 2.0);
+    awan();
+    glPopMatrix();
+
     glPopMatrix();
     glutSwapBuffers();
 }
+
+void awan(){
+ glPushMatrix();
+ glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+ glColor3ub(153, 223, 255);
+ glutSolidSphere(10, 50, 50);
+ glPopMatrix();
+ glPushMatrix();
+ glTranslatef(10,0,1);
+ glutSolidSphere(5, 50, 50);
+ glPopMatrix();
+ glPushMatrix();
+ glTranslatef(-2,6,-2);
+ glutSolidSphere(7, 50, 50);
+ glPopMatrix();
+ glPushMatrix();
+ glTranslatef(-10,-3,0);
+ glutSolidSphere(7, 50, 50);
+ glPopMatrix();
+ glPushMatrix();
+ glTranslatef(6,-2,2);
+ glutSolidSphere(7, 50, 50);
+ glPopMatrix();
+ }
 
 /*
 tombol pada keyboard:
